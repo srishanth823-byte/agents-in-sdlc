@@ -24,9 +24,10 @@ La opción más sencilla en cualquier plataforma es usar el instalador oficial:
 
     ```shell
     node --version
+    npm --version
     ```
 
-3. Si cumple los requisitos del README y `package.json` del proyecto, puedes pasar a la sección siguiente.
+3. Si ambos comandos se ejecutan correctamente y Node.js cumple los requisitos del README y `package.json` del proyecto, puedes pasar a la sección siguiente.
 
 > [!TIP]
 > Solo tienes que completar estos pasos si no tienes Node instalado o si necesitas actualizarlo.
@@ -39,9 +40,13 @@ La opción más sencilla en cualquier plataforma es usar el instalador oficial:
 
     ```bash
     node --version
+    npm --version
     ```
 
-9. Debería aparecer la versión que has instalado.
+9. Deberían aparecer las versiones instaladas de Node.js y npm.
+
+> [!IMPORTANT]
+> El agente de la aplicación Copilot también debe poder ejecutar `node --version` y `npm --version`. Que los comandos funcionen en tu terminal habitual no garantiza que estén disponibles en la aplicación. Cierra la aplicación por completo y vuelve a abrirla después de instalar Node.js o cambiar `PATH`. Si alguno de los comandos sigue fallando en una sesión, sigue los [pasos para solucionar problemas del entorno de sesión][session-environment] antes de continuar.
 
 > [!IMPORTANT]
 > Cada worktree también necesita las dependencias del proyecto y Chromium de Playwright para las comprobaciones E2E. Sigue el README del repositorio de Tailspin Toys al preparar un worktree y revisa cualquier solicitud de instalación antes de aprobarla.
@@ -86,3 +91,4 @@ A continuación, [instalarás la aplicación GitHub Copilot][next-lesson], conec
 [node-download]: https://nodejs.org/en/download
 [template-repository]: https://docs.github.com/repositories/creating-and-managing-repositories/creating-a-template-repository
 [about-copilot-app]: https://docs.github.com/copilot/concepts/agents/github-copilot-app
+[session-environment]: ../3-agent-modes/#iniciar-una-sesion-desde-la-incidencia

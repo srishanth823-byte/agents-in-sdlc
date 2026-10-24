@@ -3,7 +3,7 @@ title: "レッスン 8 - 機能の PR の作成とマージ"
 description: "フィルター機能、指示、スキルの更新、QA プロファイル、テストをまとめてレビューし、PR を作成して Agent Merge を使用します。"
 authors:
   - geektrainer
-lastUpdated: 2026-09-17
+lastUpdated: 2026-10-22
 ---
 
 フィルター機能の実装、指示の更新、スキルの更新、品質保証 (QA) プロファイル、テストを1つのブランチに保存しました。これらをまとめてレビューし、pull request を作成します。星評価の pull request (PR) は自分でマージしましたが、今回は **Agent Merge** にプロセスの管理を任せます。
@@ -23,7 +23,7 @@ lastUpdated: 2026-09-17
 
 ## Agent Merge の概要
 
-**Agent Merge** を使うと、Copilot app で pull request をマージするまでの最終工程を自動化できます。有効にすると、アプリのセッションが pull request を読み取り、失敗した CI チェックの修正、レビューコメントへの対応、必要に応じたリベースなど、マージを妨げる問題に対処します。そして GitHub で許可され次第、pull request をマージします。バックグラウンドで動作し、アプリを再起動しても継続し、pull request がマージされると自動的に無効になります。
+**Agent Merge** を使うと、Copilot app で pull request をマージするまでの最終工程を自動化できます。有効にすると、app の session が pull request を読み取り、失敗した CI チェックの修正、レビューコメントへの対応、必要に応じたリベースなど、マージを妨げる問題に対処します。そして GitHub で許可され次第、pull request をマージします。バックグラウンドで動作し、app を再起動しても継続し、pull request がマージされると自動的に無効になります。
 
 ここまでは、自分で **Merge pull request** を選択していました。Agent Merge に任せることもできますが、コードの編集やマージには引き続き明示的な承認が必要です。マージを許可する前に、許可される操作と作業内容をレビューしてください。
 
@@ -31,10 +31,10 @@ lastUpdated: 2026-09-17
 
 コードの作成とレビューが完了したので、Agent Merge に PR プロセスを管理させましょう。
 
-1. エージェントピッカーで **Default agent** を選択します。
+1. agent picker で **Default agent** を選択します。
 2. **Create PR** の横にあるドロップダウンを選択します。
-3. **Agent merge** を選択します。ボタンが **Agent merge** に変わります。
-4. **Agent merge** を選択し、Agent Merge のプロセスを開始します。
+3. **Agent Merge** を選択します。ボタンが **Agent Merge** に変わります。
+4. **Agent Merge** ボタンを選択してプロセスを開始します。ドロップダウンの項目を選んだだけでは開始されません。
 
 Agent Merge のプロセスが開始され、次の処理を行います。
 
@@ -47,8 +47,16 @@ Agent Merge のプロセスが開始され、次の処理を行います。
 
 すべてが成功したら Agent Merge が PR もマージするように設定します。
 
-5. **Agent merge** の横にあるドロップダウンを選択します。
-6. **Merge pull request** の横にチェックが付いていることを確認します。
+5. マージ権限を付与する前に、PR の差分と検証の根拠をレビューします。
+6. **Agent Merge** の横にあるドロップダウンを選択します。
+7. **Merge pull request** の横にチェックが付いていることを確認します。
+8. agent にマージを明示的に依頼します。
+
+    ```plaintext
+    Merge the PR once all required checks and approvals pass. Do not bypass repository protections.
+    ```
+
+9. 進捗を確認し、報告されたブロッカーに対処します。次に進む前に、PR の状態が **Merged** であることを確認してください。マージ権限を有効にしたことや agent が動作中であることは、マージ完了の確認にはなりません。
 
 > [!IMPORTANT]
 > Agent Merge は、リポジトリの保護や権限不足を回避しません。続行前にそれらの阻害要因を解消してください。
